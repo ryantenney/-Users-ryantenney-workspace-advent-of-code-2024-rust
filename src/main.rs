@@ -22,6 +22,7 @@ use std::path::{Path, PathBuf};
 use std::str;
 use std::time::{Duration, Instant};
 use anyhow::{anyhow, Error};
+use regex::Regex;
 use reqwest::blocking::Client;
 use aocday::AocDay;
 use days::build_days;
@@ -32,8 +33,9 @@ use crate::aocday::{AocInfo, AocInput, AocOutput};
 use crate::RunMode::{All, Single, Today};
 
 const YEAR: i32 = 2024;
-const RUN_DAY: Option<u8> = Some(6);
-const RUN_MODE: RunMode = Single;
+const RUN_DAY: Option<u8> = None;
+const RUN_MODE: RunMode = Unlocked;
+const REDACT: bool = true;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 enum RunMode {
@@ -101,15 +103,22 @@ fn print_part(part_number: u8, result: Result<AocOutput, Error>, duration: Durat
     match result {
         Ok(solution) => {
             if let AocOutput::Multiline(text) = solution {
-                println!("  Part {}: ({:?})\n    {}", part_number, duration, text.replace('\n', "\n    "));
+                println!("  Part {}: ({:?})\n    {}", part_number, duration, redact(text).replace('\n', "\n    "));
             } else if let AocOutput::Unimplemented = solution {
-                    println!("  Part {}: {}", part_number, solution);
+                println!("  Part {}: {}", part_number, redact(solution.to_string()));
             } else {
-                println!("  Part {}: {} ({:?})", part_number, solution, duration);
+                println!("  Part {}: {} ({:?})", part_number, redact(solution.to_string()), duration);
             }
         },
         Err(e) => {
             println!("  Part {}: (Error)\n    {}", part_number, format!("{e:?}").replace('\n', "\n    "));
         }
     }
+}
+
+fn redact(input: String) -> String {
+    if !REDACT || input == "Unimplemented" {
+        return input;
+    }
+    Regex::new(r"[a-z0-9\.]").unwrap().replace_all(input.as_str(), "x").to_string()
 }

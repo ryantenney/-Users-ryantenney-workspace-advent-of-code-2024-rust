@@ -16,4 +16,8 @@ Cargo.lock
 *.iml
 .idea/
 
+# AoC Session Token
 .session_token
+
+# AoC Input Files
+src/day*.txt

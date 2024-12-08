@@ -24,7 +24,7 @@ impl Today {
 impl AocDay for Today {
 
     fn info(&self) -> AocInfo {
-        (6, "Template").into()
+        (6, "Guard Gallivant").into()
     }
 
     fn init(&mut self, input: AocInput) -> Result<(), Error> {
