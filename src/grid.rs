@@ -82,7 +82,7 @@ impl<'a, T> Iterator for GridIterator<'a, T> where T: Clone {
     fn next(&mut self) -> Option<Self::Item> {
         let pos = self.pos;
         self.pos.x += 1;
-        if self.pos.x >= self.grid.bounds.x {
+        if self.pos.x > self.grid.bounds.x {
             self.pos.x = 0;
             self.pos.y += 1;
         }
@@ -123,6 +123,13 @@ impl Position {
             .zip(self.y.checked_add_signed(vec.y))
             .map(|(x, y)| Position::new(x, y))
     }
+
+    pub fn checked_sub(&self, vec: &Vector) -> Option<Position> {
+        self.x.checked_sub_signed(vec.x)
+            .zip(self.y.checked_sub_signed(vec.y))
+            .map(|(x, y)| Position::new(x, y))
+    }
+
 }
 
 impl Display for Position {
@@ -246,6 +253,12 @@ impl ToVector for Vector {
 
     fn to_vector(&self) -> Vector {
         *self
+    }
+}
+
+impl Display for Vector {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "({}, {})", self.y, self.x)
     }
 }
 

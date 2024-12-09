@@ -29,5 +29,8 @@ Day 7: Bridge Repair
   Init  : (450.791µs)
   Part 1: xxxxxxxxxxxxx (138.917µs)
   Part 2: xxxxxxxxxxxxxxx (1.302833ms)
-Total: 1.618089667s
+Day 8: Resonant Collinearity
+  Init  : (75.708µs)
+  Part 1: xxx (162.792µs)
+  Part 2: xxxx (502.458µs)
 ```

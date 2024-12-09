@@ -1,3 +1,5 @@
+#![feature(iter_collect_into)]
+#![feature(mixed_integer_ops_unsigned_sub)]
 #![allow(dead_code)]
 #![allow(unused_imports)]
 
