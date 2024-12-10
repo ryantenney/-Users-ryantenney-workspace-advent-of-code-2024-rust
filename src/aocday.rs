@@ -81,6 +81,10 @@ impl AocInput {
         self.raw.clone()
     }
 
+    pub fn len(&self) -> usize {
+        self.raw.len()
+    }
+
     pub fn trim(&self) -> Self {
         let trimmed_lines: Vec<String> = self.lines.iter()
             .map(|s| s.trim().to_string())
