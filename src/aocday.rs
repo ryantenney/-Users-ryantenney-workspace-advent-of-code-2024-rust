@@ -124,7 +124,8 @@ pub enum AocOutput {
     String(String),
     Multiline(String),
     Num(i32),
-    BigUnsigned(u64),
+    BigUnsigned(usize),
+    BigSigned(isize),
 }
 
 impl Display for AocOutput {
@@ -135,6 +136,7 @@ impl Display for AocOutput {
             AocOutput::Multiline(str) => f.write_str(str),
             AocOutput::Num(num) => f.write_fmt(format_args!("{num}")),
             AocOutput::BigUnsigned(num) => f.write_fmt(format_args!("{num}")),
+            AocOutput::BigSigned(num) => f.write_fmt(format_args!("{num}")),
         }
     }
 }
@@ -154,6 +156,18 @@ impl From<i16> for AocOutput {
 impl From<i32> for AocOutput {
     fn from(value: i32) -> Self {
         Self::Num(value)
+    }
+}
+
+impl From<i64> for AocOutput {
+    fn from(value: i64) -> Self {
+        Self::BigSigned(value as isize)
+    }
+}
+
+impl From<isize> for AocOutput {
+    fn from(value: isize) -> Self {
+        Self::BigSigned(value)
     }
 }
 
@@ -177,13 +191,13 @@ impl From<u32> for AocOutput {
 
 impl From<u64> for AocOutput {
     fn from(value: u64) -> Self {
-        Self::BigUnsigned(value)
+        Self::BigUnsigned(value as usize)
     }
 }
 
 impl From<usize> for AocOutput {
     fn from(value: usize) -> Self {
-        Self::BigUnsigned(value as u64)
+        Self::BigUnsigned(value)
     }
 }
 

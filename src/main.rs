@@ -13,6 +13,7 @@ mod day7;
 mod day8;
 mod day9;
 mod day11;
+mod day13;
 mod timer;
 mod util;
 mod aocday;

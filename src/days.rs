@@ -9,6 +9,7 @@ use crate::day7::Day7;
 use crate::day8::Day8;
 use crate::day9::Day9;
 use crate::day11::Day11;
+use crate::day13::Day13;
 
 pub fn build_days() -> Vec<Box<dyn AocDay>> {
     vec![
@@ -22,5 +23,6 @@ pub fn build_days() -> Vec<Box<dyn AocDay>> {
         Box::new(Day8::new()),
         Box::new(Day9::new()),
         Box::new(Day11::new()),
+        Box::new(Day13::new()),
     ]
 }
