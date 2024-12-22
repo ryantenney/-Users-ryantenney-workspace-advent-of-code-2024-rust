@@ -1,5 +1,6 @@
 #![feature(iter_collect_into)]
 #![feature(mixed_integer_ops_unsigned_sub)]
+#![feature(unsigned_signed_diff)]
 #![allow(dead_code)]
 #![allow(unused_imports)]
 
@@ -14,6 +15,7 @@ mod day8;
 mod day9;
 mod day11;
 mod day13;
+mod day22;
 mod timer;
 mod util;
 mod aocday;

@@ -33,4 +33,8 @@ Day 8: Resonant Collinearity
   Init  : (75.708µs)
   Part 1: xxx (162.792µs)
   Part 2: xxxx (502.458µs)
+Day 22: Monkey Market
+  Init  : (116.19325ms)
+  Part 1: 13764677935 (12.023542ms)
+  Part 2: 1619 (228.353958ms)
 ```
